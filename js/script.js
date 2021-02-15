@@ -1,112 +1,52 @@
-"use strict";
+'use strict';
 
-let useInner = document.querySelector("#topic-inner");
-let useSize = document.querySelector("#topic-size");
-let useDecor = document.querySelector("#topic-decor");
+let titleChoiceOne = document.querySelector('.choices-one__slides');
+let choicesOneBtn = document.querySelectorAll('.choices-one__btn');
+
+let titleChoiceTwo = document.querySelector('.choices-two__slides');
+let choicesTwoBtn = document.querySelectorAll('.choices-two__btn');
+let choicesTwoLink = document.querySelectorAll('.choices-two__link');
+
+let titleChoiceThree = document.querySelector('.choices-three__slides');
+let choicesThreeBtn = document.querySelectorAll('.choices-three__btn');
+let choicesThreeLink = document.querySelectorAll('.choices-three__link');
+
+let useInner = document.getElementById('topic-inner');
+let useSize = document.getElementById('topic-size');
+let useDecor = document.getElementById('topic-decor');
 
 
-//for all
-
-if (window.innerWidth > 0) {
-  document.querySelector("#inner-btn1").addEventListener("click", function() {
-    useInner.selectedIndex = 0;
-  });
-
-  document.querySelector("#inner-btn2").addEventListener("click", function() {
-    useInner.selectedIndex = 1;
-  });
-
-  document.querySelector("#inner-btn3").addEventListener("click", function() {
-    useInner.selectedIndex = 2;
-  });
-
-  document.querySelector("#inner-btn4").addEventListener("click", function() {
-    useInner.selectedIndex = 3;
-  });
-
-  document.querySelector("#inner-btn5").addEventListener("click", function() {
-    useInner.selectedIndex = 4;
-  });
-
-//for 320
+function makeOrder(target, targetButton, useChoise) {
   
-  document.querySelector("#size-btn1").addEventListener("click", function() {
-    useSize.selectedIndex = 0;
-  });
-
-  document.querySelector("#size-btn2").addEventListener("click", function() {
-    useSize.selectedIndex = 1;
-  });
-
-  document.querySelector("#size-btn3").addEventListener("click", function() {
-    useSize.selectedIndex = 2;
-  });
-
-  document.querySelector("#size-btn4").addEventListener("click", function() {
-    useSize.selectedIndex = 3;
-  });
-
-
-  document.querySelector("#dessert-btn1").addEventListener("click", function() {
-    useDecor.selectedIndex = 0;
-  });
-
-  document.querySelector("#dessert-btn2").addEventListener("click", function() {
-    useDecor.selectedIndex = 1;
-  });
-
-  document.querySelector("#dessert-btn3").addEventListener("click", function() {
-    useDecor.selectedIndex = 2;
-  });
-
-  document.querySelector("#dessert-btn4").addEventListener("click", function() {
-    useDecor.selectedIndex = 3;
-  });
-  
-  document.querySelector("#dessert-btn5").addEventListener("click", function() {
-    useDecor.selectedIndex = 4;
-  });
+  if (target.closest('a')) {
+    
+    for (let i = 0; i < targetButton.length; i++) {
+      
+      if (targetButton[i] == target.closest('a')) {
+        useChoise.selectedIndex = i;
+      }
+      
+    }
+    
+  } 
   
 }
 
-//for 768 and desktop
+titleChoiceOne.addEventListener('click', function(evt) {
+  let target = evt.target;
+  makeOrder(target, choicesOneBtn, useInner);
+});
 
-if (window.innerWidth > 768) {
-  document.querySelector("#circle-btn1").addEventListener("click", function() {
-    useSize.selectedIndex = 0;
-  });
+titleChoiceTwo.addEventListener('click', function(evt) {
+  let target = evt.target;
+  makeOrder(target, choicesTwoBtn, useSize);
+  makeOrder(target, choicesTwoLink, useSize);
+});
 
-  document.querySelector("#circle-btn2").addEventListener("click", function() {
-    useSize.selectedIndex = 1;
-  });
-
-  document.querySelector("#circle-btn3").addEventListener("click", function() {
-    useSize.selectedIndex = 2;
-  });
-
-  document.querySelector("#circle-btn4").addEventListener("click", function() {
-    useSize.selectedIndex = 3;
-  });
+titleChoiceThree.addEventListener('click', function(evt) {
+  let target = evt.target;
+  makeOrder(target, choicesThreeBtn, useDecor);
+  makeOrder(target, choicesThreeLink, useDecor);
+});    
 
 
-  document.querySelector("#decor-btn1").addEventListener("click", function() {
-    useDecor.selectedIndex = 0;
-  });
-
-  document.querySelector("#decor-btn2").addEventListener("click", function() {
-    useDecor.selectedIndex = 1;
-  });
-
-  document.querySelector("#decor-btn3").addEventListener("click", function() {
-    useDecor.selectedIndex = 2;
-  });
-
-  document.querySelector("#decor-btn4").addEventListener("click", function() {
-    useDecor.selectedIndex = 3;
-  });
-  
-  document.querySelector("#decor-btn5").addEventListener("click", function() {
-    useDecor.selectedIndex = 4;
-  });
-
-}
